@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Focus Lock",
+  "version": "1.0",
+  "description": "Study mode: one tab only, no YouTube recommendations, hard to quit.",
+  "permissions": ["tabs", "storage", "alarms", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Focus Lock" },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["youtube.js"],
+      "css": ["youtube.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
